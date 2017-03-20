@@ -17,7 +17,7 @@ System Requirements
 Installation
 ************
 
-1. Checkout Project / Clone / Download zip pada folder htdocs
+1. Checkout Project / Clone / Download zip pada local folder anda (htdocs)
 2. Buat database dengan nama 'forecasting_product'
 3. Jangan lupa konfigurasi pada application/config/database.php
 4. Aplikasi siap digunakan
