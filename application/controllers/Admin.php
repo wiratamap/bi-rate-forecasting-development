@@ -12,7 +12,7 @@ class Admin extends CI_Controller {
 
 		$this->GLOBAL_DATA_SUBSYSTEM_VALUE = $this->admin_model->get_one('subsystem_value', 'ms_subsystem', $this->session->userdata('uuid_ms_subsystem'));
 
-		if(empty($this->session->userdata('is_logged_in')) || $this->session->userdata('uuid_ms_subsystem') != $this->GLOBAL_PARAM_UUID_SUBSYSTEM_ADMIN) {
+		if(empty($this->session->userdata('is_logged_in')) && $this->session->userdata('uuid_ms_subsystem') != $this->GLOBAL_PARAM_UUID_SUBSYSTEM_ADMIN) {
 			$this->session->set_flashdata('msg','<div class="alert alert-danger text-center">You dont have an access to view this page!</div>');
 			redirect('');
 		}

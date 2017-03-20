@@ -4,10 +4,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Auth extends CI_Controller {
 
-	private $GLOBAL_PARAM_UUID_SUBSYSTEM_CLIENT = "d8067dd0-06ba-11e7-88db-c454448293a1";
-	private $GLOBAL_PARAM_UUID_SUBSYSTEM_EXPERT = "4249cbf4-06ba-11e7-88db-c454448293a1";
 	private $GLOBAL_PARAM_UUID_SUBSYSTEM_ADMIN = "4249b7c8-06ba-11e7-88db-c454448293a1";
-
+	private $GLOBAL_PARAM_UUID_SUBSYSTEM_EXPERT = "4249cbf4-06ba-11e7-88db-c454448293a1";
+	private $GLOBAL_PARAM_UUID_SUBSYSTEM_CLIENT = "d8067dd0-06ba-11e7-88db-c454448293a1";
+	
 	public function __construct() {
 		parent::__construct();
 	}
