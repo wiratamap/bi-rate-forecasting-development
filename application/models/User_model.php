@@ -12,8 +12,6 @@ class User_model extends CI_Model {
   public function insert_user($data) {
     $this->db->set('uuid_ms_user', 'UUID()', FALSE);
     $this->db->set('dtm_crt', 'CURRENT_TIME()', FALSE);
-    $this->db->set('is_logged_in', '0', FALSE);
-    $this->db->set('is_active', '0', FALSE);
     $this->db->set('uuid_ms_subsystem', $this->GLOBAL_PARAM_UUID_SUBSYSTEM_CLIENT);
     return $this->db->insert('ms_user', $data);
   }
@@ -21,7 +19,6 @@ class User_model extends CI_Model {
   public function insert_expert($data) {
     $this->db->set('uuid_ms_user', 'UUID()', FALSE);
     $this->db->set('dtm_crt', 'CURRENT_TIME()', FALSE);
-    $this->db->set('is_logged_in', '0', FALSE);
     $this->db->set('is_active', '1', FALSE);
     $this->db->set('uuid_ms_subsystem', $this->GLOBAL_PARAM_UUID_SUBSYSTEM_EXPERT);
     return $this->db->insert('ms_user', $data);
