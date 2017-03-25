@@ -5,14 +5,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Expert extends CI_Controller {
 
 	public $GLOBAL_DATA_SUBSYSTEM_VALUE;
-	private $GLOBAL_PARAM_UUID_SUBSYSTEM_EXPERT = "4249cbf4-06ba-11e7-88db-c454448293a1";
 
 	public function __construct() {
 		parent::__construct();
 
 		$this->GLOBAL_DATA_SUBSYSTEM_VALUE = $this->expert_model->get_one('subsystem_value', 'ms_subsystem', $this->session->userdata('uuid_ms_subsystem'));
 
-		if(empty($this->session->userdata('is_logged_in')) && $this->session->userdata('uuid_ms_subsystem') != $this->GLOBAL_PARAM_UUID_SUBSYSTEM_EXPERT) {
+		if(empty($this->session->userdata('is_logged_in')) && $this->session->userdata('uuid_ms_subsystem') != GLOBAL_PARAM_UUID_SUBSYSTEM_EXPERT) {
 			$this->session->set_flashdata('msg','<div class="alert alert-danger text-center">You dont have an access to view this page!</div>');
 			redirect('');
 		}

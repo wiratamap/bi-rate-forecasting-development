@@ -4,10 +4,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Auth extends CI_Controller {
 
-	private $GLOBAL_PARAM_UUID_SUBSYSTEM_ADMIN = "4249b7c8-06ba-11e7-88db-c454448293a1";
-	private $GLOBAL_PARAM_UUID_SUBSYSTEM_EXPERT = "4249cbf4-06ba-11e7-88db-c454448293a1";
-	private $GLOBAL_PARAM_UUID_SUBSYSTEM_CLIENT = "d8067dd0-06ba-11e7-88db-c454448293a1";
-
 	public function __construct() {
 		parent::__construct();
 	}
@@ -43,11 +39,11 @@ class Auth extends CI_Controller {
 
 					$this->session->set_userdata($data_session);
 
-					if ($this->session->userdata('uuid_ms_subsystem') == $this->GLOBAL_PARAM_UUID_SUBSYSTEM_ADMIN) {
+					if ($this->session->userdata('uuid_ms_subsystem') == GLOBAL_PARAM_UUID_SUBSYSTEM_ADMIN) {
 						redirect('admin/home');
-					} elseif ($this->session->userdata('uuid_ms_subsystem') == $this->GLOBAL_PARAM_UUID_SUBSYSTEM_EXPERT) {
+					} elseif ($this->session->userdata('uuid_ms_subsystem') == GLOBAL_PARAM_UUID_SUBSYSTEM_EXPERT) {
 						redirect('expert/home');
-					} elseif ($this->session->userdata('uuid_ms_subsystem') == $this->GLOBAL_PARAM_UUID_SUBSYSTEM_CLIENT) {
+					} elseif ($this->session->userdata('uuid_ms_subsystem') == GLOBAL_PARAM_UUID_SUBSYSTEM_CLIENT) {
 						redirect('client/home');
 					} else {
 						$this->session->set_flashdata('msg','<div class="alert alert-danger text-center">Invalid Subsystem, Please contact your Administrator or Web Master!</div>');
