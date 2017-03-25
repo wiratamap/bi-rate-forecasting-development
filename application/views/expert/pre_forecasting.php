@@ -100,7 +100,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
-        
+
         <li class="treeview">
           <a href="#">
             <i class="fa fa-database"></i> <span>Master Data</span>
@@ -250,7 +250,7 @@
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 1.0.0
+      <b>Version</b> <?php echo $this->session->userdata('prm_appversion'); ?>
     </div>
     <strong>Copyright &copy; 2017 <a href="https://www.linkedin.com/in/wiratama-paramasatya-40b387133/">Wiratama Paramasatya</a>.</strong> All rights
     reserved.

@@ -7,7 +7,7 @@ class Auth extends CI_Controller {
 	private $GLOBAL_PARAM_UUID_SUBSYSTEM_ADMIN = "4249b7c8-06ba-11e7-88db-c454448293a1";
 	private $GLOBAL_PARAM_UUID_SUBSYSTEM_EXPERT = "4249cbf4-06ba-11e7-88db-c454448293a1";
 	private $GLOBAL_PARAM_UUID_SUBSYSTEM_CLIENT = "d8067dd0-06ba-11e7-88db-c454448293a1";
-	
+
 	public function __construct() {
 		parent::__construct();
 	}
@@ -37,7 +37,8 @@ class Auth extends CI_Controller {
 						'uuid_ms_subsystem' => $this->auth_model->get_one('uuid_ms_subsystem', 'ms_user', $username),
 						'uuid_ms_user' => $this->auth_model->get_one('uuid_ms_user', 'ms_user', $username),
 						'dtm_crt' => $this->auth_model->get_one('dtm_crt', 'ms_user', $username),
-						'is_logged_in' => $this->auth_model->get_one('is_logged_in', 'ms_user', $username)
+						'is_logged_in' => $this->auth_model->get_one('is_logged_in', 'ms_user', $username),
+						'prm_appversion' => $this->gs_model->get_one('gs_value', 'ms_general_settings', 'PRM1_APPVERSION')
 					);
 
 					$this->session->set_userdata($data_session);
