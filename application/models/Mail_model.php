@@ -68,25 +68,43 @@ class Mail_model extends CI_Model {
   }
 
   public function send_mail($data) {
-    $uuid_ms_mail = $this->db->set('uuid_ms_mail', 'UUID()', FALSE);
+    $this->db->set('uuid_ms_mail', 'UUID()', FALSE);
     $this->db->set('dtm_send', 'CURRENT_TIME()', FALSE);
-    send_mail_sender_trigger($uuid_ms_mail);
-    send_mail_receiver_trigger($uuid_ms_mail);
-    return $this->db->insert('ms_mail', $data);
+    $this->db->insert('ms_mail', $data);
+    $this->send_mail_sender_trigger();
+    $this->send_mail_receiver_trigger();
+    return true;
   }
 
-  public function send_mail_sender_trigger($uuid_ms_mail) {
-    $this->db->set('uuid_ms_mail', $uuid_ms_mail);
-    return $this->db->insert('ms_mail_sender');
+  public function send_mail_sender_trigger() {
+    $this->db->select('uuid_ms_mail');
+    $this->db->order_by('dtm_send', 'DESC');
+    $this->db->limit(1);
+    $result = $this->db->get('ms_mail')->row_array();
+    $this->db->set('uuid_ms_mail_sender', 'UUID()', FALSE);
+    $this->db->set('uuid_ms_mail', $result['uuid_ms_mail']);
+    $this->db->insert('ms_mail_sender');
   }
 
-  public function send_mail_receiver_trigger($uuid_ms_mail) {
-    $this->db->set('uuid_ms_mail', $uuid_ms_mail);
-    return $this->db->insert('ms_mail_receiver');
+  public function send_mail_receiver_trigger() {
+    $this->db->select('uuid_ms_mail');
+    $this->db->order_by('dtm_send', 'DESC');
+    $this->db->limit(1);
+    $result = $this->db->get('ms_mail')->row_array();
+    $this->db->set('uuid_ms_mail_receiver', 'UUID()', FALSE);
+    $this->db->set('uuid_ms_mail', $result['uuid_ms_mail']);
+    $this->db->insert('ms_mail_receiver');
   }
 
   public function send_to_trash($uuid_ms_mail) {
     $this->db->set('is_removed', '1');
+    $this->db->set('dtm_upd', 'CURRENT_TIME', FALSE);
+    $this->db->where('uuid_ms_mail', $uuid_ms_mail);
+    return $this->db->update('ms_mail_receiver');
+  }
+
+  public function remove_mail($uuid_ms_mail) {
+    $this->db->set('is_viewable', '0');
     $this->db->set('dtm_upd', 'CURRENT_TIME', FALSE);
     $this->db->where('uuid_ms_mail', $uuid_ms_mail);
     return $this->db->update('ms_mail_receiver');

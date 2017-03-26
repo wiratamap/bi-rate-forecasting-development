@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>BI Rate Forecasting | Tambah User</title>
+  <title>BI Rate Forecasting | Mailbox</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -171,7 +171,7 @@
     <section class="content">
       <div class="row">
         <div class="col-md-3">
-          <a href="compose.html" class="btn btn-primary btn-block margin-bottom">Compose</a>
+          <a href="<?php echo base_url('admin/compose-mail'); ?>" class="btn btn-primary btn-block margin-bottom">Compose</a>
 
           <div class="box box-solid">
             <div class="box-header with-border">
@@ -225,7 +225,7 @@
                       foreach ($inbox as $row) {
                         echo '<tr>';
                         echo  '<td class="mailbox-name"><a href=read-mail/'.$row->uuid_ms_mail.'>'.$row->full_name.'</a></td>';
-                        echo  '<td class="mailbox-subject"><b>'.$row->subject.'</b>'.' - '. substr($row->body, 0, 40).'...';
+                        echo  '<td class="mailbox-subject"><b>'.$row->subject.'</b>'.' - '. substr(strip_tags($row->body), 0, 40).'...';
                         echo  '</td>';
                         echo  '<td class="mailbox-date">'.$row->dtm_send.'</td>';
                         echo '<td><a href="send-to-trash/'.$row->uuid_ms_mail.'" role="button" class="btn btn-danger btn-flat"><i class="fa fa-trash"></i></a></td>';
