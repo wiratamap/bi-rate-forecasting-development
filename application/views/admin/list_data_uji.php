@@ -145,6 +145,12 @@
             <li><a href="<?php echo base_url('admin/list-user'); ?>"><i class="fa fa-user"></i> List User</a></li>
           </ul>
         </li>
+
+        <li class="treeview">
+          <a href="<?php echo base_url('admin/list-inbox'); ?>">
+            <i class="fa fa-envelope"></i> <span>Mailbox</span>
+          </a>
+        </li>
     </section>
     <!-- /.sidebar -->
   </aside>

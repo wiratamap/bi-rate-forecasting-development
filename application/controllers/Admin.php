@@ -129,4 +129,45 @@ class Admin extends CI_Controller {
 																									 'bi_percentage' => $bi_percentage));
 	}
 
+	public function list_inbox() {
+		$data['inbox'] = $this->mail_model->get_all_inbox($this->session->userdata('uuid_ms_user'));
+
+		$this->load->view('admin/list_inbox', array('inbox' => $data['inbox']));
+	}
+
+	//buggy feature. still on development
+	// public function list_draft() {
+	//
+	// }
+
+	public function list_trash() {
+		$data['list_trash'] = $this->mail_model->get_all_trash($this->session->userdata('uuid_ms_user'));
+
+		$this->load->view('admin/list_trash', array('list_trash' => $data['list_trash']));
+	}
+
+	public function list_sent_mail() {
+		$data['sent_mail'] = $this->mail_model->get_all_sent_mail($this->session->userdata('uuid_ms_user'));
+
+		$this->load->view('admin/list_sent_mail', array('sent_mail' => $data['sent_mail']));
+	}
+
+	public function compose_mail() {
+
+	}
+
+	public function send_to_trash($uuid_ms_mail) {
+		$this->mail_model->send_to_trash($uuid_ms_mail);
+		$this->session->set_flashdata('msg','<div class="alert alert-success text-center">Mail has been sent to trash!</div>');
+		redirect('admin/list-inbox');
+	}
+
+	// public function send_to_draft() {
+	//
+	// }
+
+	public function remove_mail() {
+
+	}
+
 }

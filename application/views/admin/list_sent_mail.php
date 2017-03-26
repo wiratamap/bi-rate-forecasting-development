@@ -131,7 +131,7 @@
           </ul>
         </li>
 
-        <li class="active treeview">
+        <li class="treeview">
           <a href="#">
             <i class="fa fa-users"></i> <span>Master User</span>
             <span class="pull-right-container">
@@ -144,8 +144,8 @@
           </ul>
         </li>
 
-        <li class="treeview">
-          <a href="<?php echo base_url('admin/list-inbox'); ?>">
+        <li class="active treeview">
+          <a href="#">
             <i class="fa fa-envelope"></i> <span>Mailbox</span>
           </a>
         </li>
@@ -159,64 +159,96 @@
     <section class="content-header">
       <h1>
         Dashboard
-        <small>List User Panel</small>
+        <small>Mailbox Panel</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?php echo base_url('admin/home')?>"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="fa fa-users active"> Add User</li>
+        <li class="fa fa-users active"> Mailbox</li>
       </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
-      <div class="col-md-12">
-        <!-- general form elements -->
-        <div class="box box-primary">
-          <div class="box-header with-border">
-            <h3 class="box-title">Tambah Pakar</h3>
-          </div>
-          <!-- /.box-header -->
-          <!-- form start -->
-          <?php echo form_open('admin/add-user'); ?>
-            <div class="box-body">
-              <div class="form-group has-feedback">
-                <label>Username</label>
-                <input type="text" class="form-control" value="<?php echo set_value('username')?>" placeholder="Username" name="username" required>
+      <div class="row">
+        <div class="col-md-3">
+          <a href="compose.html" class="btn btn-primary btn-block margin-bottom">Compose</a>
+
+          <div class="box box-solid">
+            <div class="box-header with-border">
+              <h3 class="box-title">Folders</h3>
+
+              <div class="box-tools">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
               </div>
-                <span class="text-danger"><?php echo form_error('username'); ?></span>
-              <div class="form-group has-feedback">
-                <label>Full Name</label>
-                <input type="text" class="form-control" value="<?php echo set_value('full_name')?>" placeholder="Full name" name="full_name" required>
-              </div>
-                <span class="text-danger"><?php echo form_error('full_name'); ?></span>
-              <div class="form-group has-feedback">
-                <label>Email</label>
-                <input type="email" class="form-control" value="<?php echo set_value('email')?>" placeholder="Email" name="email" required>
-              </div>
-                <span class="text-danger"><?php echo form_error('email'); ?></span>
-              <div class="form-group has-feedback">
-                <label>Password</label>
-                <input type="password" class="form-control" value="<?php echo set_value('password')?>" placeholder="Password" name="password" required>
-              </div>
-                <span class="text-danger"><?php echo form_error('password'); ?></span>
-              <div class="form-group has-feedback">
-                <label>Retype Password</label>
-                <input type="password" class="form-control" placeholder="Retype password" name="passconf" required>
-              </div>
-                <span class="text-danger"><?php echo form_error('passconf'); ?></span>
-              <div class="row">
+            </div>
+            <div class="box-body no-padding">
+              <ul class="nav nav-pills nav-stacked">
+                <li><a href="<?php echo base_url('admin/list-inbox'); ?>"><i class="fa fa-inbox"></i> Inbox</a></li>
+                <li class="active"><a href="#"><i class="fa fa-envelope-o"></i> Sent</a></li>
+                <li><a href="#"><i class="fa fa-file-text-o"></i> Drafts</a></li>
+                </li>
+                <li><a href=<?php echo base_url('admin/list-trash'); ?>><i class="fa fa-trash-o"></i> Trash</a></li>
+              </ul>
             </div>
             <!-- /.box-body -->
-
-            <div class="box-footer">
-              <button type="reset" class="btn btn-primary">Reset</button>
-              <button type="submit" class="btn btn-primary pull-right">Submit</button>
-            </div>
-          <?php echo form_close(); ?>
-          <?php echo $this->session->flashdata('msg'); ?>
+          </div>
+          <!-- /. box -->
         </div>
-        <!-- /.box -->
+        <!-- /.col -->
+        <div class="col-md-9">
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Sent Mail</h3>
+
+              <!-- <div class="box-tools pull-right">
+                <div class="has-feedback">
+                  <input type="text" class="form-control input-sm" placeholder="Search Mail">
+                  <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                </div>
+              </div> -->
+              <!-- /.box-tools -->
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+              <div class="mailbox-controls">
+                <!-- /.btn-group -->
+                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
+                <!-- /.pull-right -->
+              </div>
+              <div class="table-responsive mailbox-messages">
+                <table class="table table-hover table-striped">
+                  <tbody>
+                    <?php
+                    if($sent_mail) {
+                      foreach ($sent_mail as $row) {
+                        echo '<tr>';
+                        echo  '<td class="mailbox-name"><a href=read-mail/'.$row->uuid_ms_mail.'>'.$row->full_name.'</a></td>';
+                        echo  '<td class="mailbox-subject"><b>'.$row->subject.'</b>'.' - '. substr($row->body, 0, 40).'...';
+                        echo  '</td>';
+                        echo  '<td class="mailbox-date">'.$row->dtm_send.'</td>';
+                        echo '</tr>';
+                      }
+                    } else {
+                      echo '<tr align="center">
+                              <td>Tidak ada pesan terkirim</td>
+                            </tr>';
+                    }
+                    ?>
+
+                  </tbody>
+                </table>
+                <!-- /.table -->
+              </div>
+              <!-- /.mail-box-messages -->
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /. box -->
+        </div>
+        <!-- /.col -->
       </div>
+      <!-- /.row -->
     </section>
     <!-- /.content -->
   </div>

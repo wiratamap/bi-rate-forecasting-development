@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 20 Mar 2017 pada 14.05
+-- Generation Time: 26 Mar 2017 pada 06.04
 -- Versi Server: 5.6.25
 -- PHP Version: 5.6.11
 
@@ -222,6 +222,96 @@ INSERT INTO `fp_data_uji` (`uuid_fp_data_uji`, `bi_rate`, `bulan`, `tahun`, `dtm
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `ms_general_settings`
+--
+
+CREATE TABLE IF NOT EXISTS `ms_general_settings` (
+  `uuid_ms_general_settings` varchar(255) NOT NULL,
+  `gs_code` varchar(30) NOT NULL,
+  `gs_value` varchar(15) NOT NULL,
+  `dtm_crt` datetime DEFAULT NULL,
+  `dtm_upd` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `ms_general_settings`
+--
+
+INSERT INTO `ms_general_settings` (`uuid_ms_general_settings`, `gs_code`, `gs_value`, `dtm_crt`, `dtm_upd`) VALUES
+('8782fd9a-10fb-11e7-ba67-c454448293a1', 'PRM1_APPVERSION', '1.0.3', '2017-03-25 08:36:55', '2017-03-25 12:15:25');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `ms_mail`
+--
+
+CREATE TABLE IF NOT EXISTS `ms_mail` (
+  `uuid_ms_mail` varchar(255) NOT NULL,
+  `uuid_ms_user_sender` varchar(255) NOT NULL,
+  `uuid_ms_user_receiver` varchar(255) NOT NULL,
+  `subject` text NOT NULL,
+  `body` longtext NOT NULL,
+  `dtm_send` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `ms_mail`
+--
+
+INSERT INTO `ms_mail` (`uuid_ms_mail`, `uuid_ms_user_sender`, `uuid_ms_user_receiver`, `subject`, `body`, `dtm_send`) VALUES
+('46b33c27-11d1-11e7-8ed1-c454448293a1', 'f3fb22b3-0864-11e7-ab84-c454448293a1', '08058593-06bc-11e7-88db-c454448293a1', 'Banyak Issue', 'Selamat pagi salam sejahtera untuk kita semua. Berkenaan dengan kesemuanya\r\n\r\nSelamat pagi salam sejahtera untuk kita semua. Selamat pagi salam sejahtera untuk kita semua. Selamat pagi salam sejahtera untuk kita semua. Selamat pagi salam sejahtera untuk kita semua. Selamat pagi salam sejahtera untuk kita semua. Selamat pagi salam sejahtera untuk kita semua. Selamat pagi salam sejahtera untuk kita semua. Selamat pagi salam sejahtera untuk kita semua. Selamat pagi salam sejahtera untuk kita semua. Selamat pagi salam sejahtera untuk kita semua. Selamat pagi salam sejahtera untuk kita semua. Selamat pagi salam sejahtera untuk kita semua. Selamat pagi salam sejahtera untuk kita semua. Selamat pagi salam sejahtera untuk kita semua. Selamat pagi salam sejahtera untuk kita semua. Selamat pagi salam sejahtera untuk kita semua. Selamat pagi salam sejahtera untuk kita semua. Selamat pagi salam sejahtera untuk kita semua. Selamat pagi salam sejahtera untuk kita semua. Selamat pagi salam sejahtera untuk kita semua. Selamat pagi salam sejahtera untuk kita semua. Selamat pagi salam sejahtera untuk kita semua. Selamat pagi salam sejahtera untuk kita semua. Selamat pagi salam sejahtera untuk kita semua. Selamat pagi salam sejahtera untuk kita semua. Selamat pagi salam sejahtera untuk kita semua. <br><br>', '2017-03-26 10:06:59'),
+('56ab90a3-11d3-11e7-8ed1-c454448293a1', '27f66226-08ba-11e7-be2c-c454448293a1', '08058593-06bc-11e7-88db-c454448293a1', 'Hasil peramalan error', 'Assalaumalaikum, saya ingin bertanya mengapa hasil peramalan error ya? <br>\r\n\r\nAssalaumalaikum, saya ingin bertanya mengapa hasil peramalan error ya? \r\nAssalaumalaikum, saya ingin bertanya mengapa hasil peramalan error ya? \r\nAssalaumalaikum, saya ingin bertanya mengapa hasil peramalan error ya? \r\nAssalaumalaikum, saya ingin bertanya mengapa hasil peramalan error ya? \r\nAssalaumalaikum, saya ingin bertanya mengapa hasil peramalan error ya? \r\nAssalaumalaikum, saya ingin bertanya mengapa hasil peramalan error ya? \r\nAssalaumalaikum, saya ingin bertanya mengapa hasil peramalan error ya? \r\nAssalaumalaikum, saya ingin bertanya mengapa hasil peramalan error ya? \r\nAssalaumalaikum, saya ingin bertanya mengapa hasil peramalan error ya? \r\nAssalaumalaikum, saya ingin bertanya mengapa hasil peramalan error ya? \r\nAssalaumalaikum, saya ingin bertanya mengapa hasil peramalan error ya? \r\nAssalaumalaikum, saya ingin bertanya mengapa hasil peramalan error ya? \r\nAssalaumalaikum, saya ingin bertanya mengapa hasil peramalan error ya? ', '2017-03-26 10:21:44'),
+('ccf4d55c-1104-11e7-ba67-c454448293a1', '022a594f-0864-11e7-ab84-c454448293a1', '08058593-06bc-11e7-88db-c454448293a1', 'Terdapat issue pada page home', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sodales metus neque, nec eleifend velit aliquam ac. Aenean sed vestibulum nunc. Fusce venenatis nibh et purus viverra rutrum. Praesent ac laoreet mauris. Vestibulum egestas, nunc eu vehicula iaculis, mauris nulla lobortis enim, at iaculis est arcu id massa. Cras dui erat, commodo ac elit vel, gravida bibendum lectus. Vestibulum tincidunt, neque eget tincidunt malesuada, risus eros imperdiet sem, ut facilisis lorem mauris non lectus. Integer tristique vulputate euismod. Donec et lectus eget elit luctus ornare. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam sed purus auctor, aliquam orci semper, volutpat erat. Quisque nibh neque, porta eget dui et, finibus elementum nisi. In tempor sed augue sit amet commodo. Cras non ligula a turpis convallis elementum non quis ipsum.<br><br>\r\n\r\nQuisque ac congue ante, quis pulvinar erat. Maecenas sodales orci consectetur lorem ullamcorper fermentum auctor non tortor. Vestibulum eget diam laoreet, rhoncus est at, laoreet lectus. Nam ornare est augue, sit amet interdum erat imperdiet nec. Praesent sit amet eros dapibus mi ornare dictum. Donec et sem odio. Nam ultrices ac mi eget gravida. Fusce hendrerit lectus vel libero mattis, vitae varius sapien euismod. Duis egestas tempus nibh sed aliquam. Sed laoreet dui felis. Integer nisi metus, tristique et nisl in, dapibus blandit sapien. Pellentesque ullamcorper hendrerit ultrices. Proin at eleifend urna. Nunc egestas pharetra ipsum eu gravida. Aenean efficitur suscipit augue id sodales.<br><br>\r\n\r\nDonec condimentum augue nisi, a vulputate eros suscipit quis. Curabitur nec diam quis est lobortis elementum. Quisque efficitur ligula a finibus sagittis. Etiam mauris nulla, mollis id urna in, euismod placerat magna. Quisque at elit ut odio placerat maximus. Nam fringilla blandit mi in rutrum. Fusce tellus est, imperdiet sit amet lobortis ultricies, feugiat in justo. Aliquam lacinia a sapien eu sodales. Phasellus a placerat neque. Cras in ligula tempus, dictum lacus cursus, semper magna. Morbi auctor viverra augue, non cursus ante malesuada sed. Fusce risus nibh, vehicula in varius sed, tincidunt non metus.<br><br>\r\n\r\nNullam molestie metus elit, ac condimentum dolor commodo quis. Vestibulum convallis nisl at aliquam feugiat. Nullam volutpat tellus et volutpat mattis. Nulla nisl eros, commodo sed fringilla sit amet, maximus in ligula. Sed efficitur magna at volutpat pretium. Aliquam sed varius nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer malesuada id risus nec vulputate. Nam accumsan semper erat, vel mollis lectus fringilla at. Nunc ac auctor metus. Pellentesque porta lacus quis ullamcorper ornare. Morbi quis urna in augue gravida mattis et vitae eros. Nam iaculis ac justo non tincidunt. Quisque tempus risus at enim tempus, sit amet finibus felis gravida. Aliquam consequat purus vitae ligula bibendum, vel maximus metus pulvinar. Vestibulum a venenatis quam, quis porta ante.<br><br>\r\n\r\nProin ligula lacus, porttitor eget mi ac, venenatis vehicula sapien. Fusce sit amet nulla lorem. Fusce consectetur orci congue ultrices tempus. Nam pharetra cursus metus, et pharetra lacus tristique non. Suspendisse vel nunc dignissim, consequat justo at, sollicitudin orci. Suspendisse convallis nulla ut ultricies porta. Morbi ut sollicitudin eros, id sagittis odio. Curabitur scelerisque tristique nulla. Vivamus molestie mollis nisl id vulputate. Etiam sollicitudin lacus vel egestas finibus. Ut non vulputate urna.<br><br>', '2017-03-25 09:40:51');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `ms_mail_receiver`
+--
+
+CREATE TABLE IF NOT EXISTS `ms_mail_receiver` (
+  `uuid_ms_mail` varchar(255) NOT NULL,
+  `is_viewable` varchar(5) NOT NULL DEFAULT '1',
+  `is_removed` varchar(5) NOT NULL DEFAULT '0',
+  `dtm_upd` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `ms_mail_receiver`
+--
+
+INSERT INTO `ms_mail_receiver` (`uuid_ms_mail`, `is_viewable`, `is_removed`, `dtm_upd`) VALUES
+('46b33c27-11d1-11e7-8ed1-c454448293a1', '1', '0', NULL),
+('56ab90a3-11d3-11e7-8ed1-c454448293a1', '1', '1', '2017-03-26 11:01:00'),
+('ccf4d55c-1104-11e7-ba67-c454448293a1', '1', '0', '2017-03-26 11:00:06');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `ms_mail_sender`
+--
+
+CREATE TABLE IF NOT EXISTS `ms_mail_sender` (
+  `uuid_ms_mail` varchar(255) NOT NULL,
+  `is_viewable` varchar(5) NOT NULL DEFAULT '1',
+  `is_removed` varchar(5) NOT NULL DEFAULT '0',
+  `is_drafted` varchar(5) NOT NULL DEFAULT '0',
+  `dtm_upd` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `ms_mail_sender`
+--
+
+INSERT INTO `ms_mail_sender` (`uuid_ms_mail`, `is_viewable`, `is_removed`, `is_drafted`, `dtm_upd`) VALUES
+('46b33c27-11d1-11e7-8ed1-c454448293a1', '1', '0', '0', NULL),
+('56ab90a3-11d3-11e7-8ed1-c454448293a1', '1', '0', '0', NULL),
+('ccf4d55c-1104-11e7-ba67-c454448293a1', '1', '0', '0', '2017-03-25 13:59:01');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `ms_subsystem`
 --
 
@@ -258,8 +348,8 @@ CREATE TABLE IF NOT EXISTS `ms_user` (
   `dtm_crt` datetime DEFAULT NULL,
   `dtm_upd` datetime DEFAULT NULL,
   `uuid_ms_subsystem` varchar(255) NOT NULL,
-  `is_logged_in` varchar(5) NOT NULL,
-  `is_active` varchar(5) NOT NULL
+  `is_logged_in` varchar(5) NOT NULL DEFAULT '0',
+  `is_active` varchar(5) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -268,24 +358,24 @@ CREATE TABLE IF NOT EXISTS `ms_user` (
 
 INSERT INTO `ms_user` (`uuid_ms_user`, `username`, `password`, `full_name`, `email`, `dtm_crt`, `dtm_upd`, `uuid_ms_subsystem`, `is_logged_in`, `is_active`) VALUES
 ('022a594f-0864-11e7-ab84-c454448293a1', 'medcoenergi', 'd41d8cd98f00b204e9800998ecf8427e', 'Medco Energi', 'medcoenergi@gmail.com', '2017-03-14 10:12:08', '2017-03-16 22:20:14', 'd8067dd0-06ba-11e7-88db-c454448293a1', '0', '1'),
-('08058593-06bc-11e7-88db-c454448293a1', 'wira', '5f4dcc3b5aa765d61d8327deb882cf99', 'Wiratama Paramasatya', 'wiratamaparamasatya@forecasting-product.com', '2017-03-12 07:37:11', '2017-03-12 11:27:03', '4249b7c8-06ba-11e7-88db-c454448293a1', '0', '1'),
+('08058593-06bc-11e7-88db-c454448293a1', 'wira', '5f4dcc3b5aa765d61d8327deb882cf99', 'Wiratama Paramasatya', 'wiratamaparamasatya@forecasting-product.com', '2017-03-12 07:37:11', '2017-03-12 11:27:03', '4249b7c8-06ba-11e7-88db-c454448293a1', '1', '1'),
 ('080597de-06bc-11e7-88db-c454448293a1', 'dianekaratnawati', '5f4dcc3b5aa765d61d8327deb882cf99', 'Dian Eka Ratnawati', 'dianekaratnawati@forecasting-product.com', '2017-03-12 07:39:16', '2017-03-12 11:27:03', '4249cbf4-06ba-11e7-88db-c454448293a1', '0', '1'),
 ('0805a5a1-06bc-11e7-88db-c454448293a1', 'wiratamap', '5f4dcc3b5aa765d61d8327deb882cf99', 'Wiratama Paramasatya', 'wiratamaparamasatya@gmail.com', '2017-03-12 07:37:11', '2017-03-12 11:27:03', 'd8067dd0-06ba-11e7-88db-c454448293a1', '0', '1'),
-('094659d8-0865-11e7-ab84-c454448293a1', 'bursaefekindo', '0ed542b815a0d4b0c457ad9def1a21d2', 'Bursa Efek Indonesia', 'bursaefek@bei.co.id', '2017-03-14 10:19:29', '2017-03-16 23:12:57', 'd8067dd0-06ba-11e7-88db-c454448293a1', '0', '1'),
-('1ec7a807-0a63-11e7-9553-c454448293a1', 'bankdki', '5f4dcc3b5aa765d61d8327deb882cf99', 'Bank DKI', 'bankdki@dki.gov.id', '2017-03-16 23:10:49', NULL, 'd8067dd0-06ba-11e7-88db-c454448293a1', '0', '0'),
-('27f66226-08ba-11e7-be2c-c454448293a1', 'tokopedia', '5f4dcc3b5aa765d61d8327deb882cf99', 'PT Tokopedia', 'tokopedia@tokopedia.com', '2017-03-14 20:28:48', NULL, 'd8067dd0-06ba-11e7-88db-c454448293a1', '0', '0'),
-('2e45568b-0a63-11e7-9553-c454448293a1', 'bankjatim', '5f4dcc3b5aa765d61d8327deb882cf99', 'Bank Jatim', 'bankjatim@gmail.com', '2017-03-16 23:11:15', NULL, 'd8067dd0-06ba-11e7-88db-c454448293a1', '0', '0'),
+('094659d8-0865-11e7-ab84-c454448293a1', 'bursaefekindo', '0ed542b815a0d4b0c457ad9def1a21d2', 'Bursa Efek Indonesia', 'bursaefek@bei.co.id', '2017-03-14 10:19:29', '2017-03-25 12:50:19', 'd8067dd0-06ba-11e7-88db-c454448293a1', '0', '0'),
+('27f66226-08ba-11e7-be2c-c454448293a1', 'tokopedia', '5f4dcc3b5aa765d61d8327deb882cf99', 'PT Tokopedia', 'tokopedia@tokopedia.com', '2017-03-14 20:28:48', '2017-03-26 10:22:42', 'd8067dd0-06ba-11e7-88db-c454448293a1', '0', '1'),
 ('37dbb705-08ba-11e7-be2c-c454448293a1', 'ojkindonesia', '5f4dcc3b5aa765d61d8327deb882cf99', 'Otoritas Jasa Keuangan', 'ojkindonesia@ojk.gov.id', '2017-03-14 20:29:15', '2017-03-16 22:42:23', 'd8067dd0-06ba-11e7-88db-c454448293a1', '0', '1'),
 ('59834faf-0868-11e7-ab84-c454448293a1', 'schlumberger', '5f4dcc3b5aa765d61d8327deb882cf99', 'Schlumberger Indonesia', 'schlumberger@schlumberger.com', '2017-03-14 10:43:12', NULL, 'd8067dd0-06ba-11e7-88db-c454448293a1', '0', '0'),
 ('5c48f8d1-0a5c-11e7-9553-c454448293a1', 'fisipub', 'd41d8cd98f00b204e9800998ecf8427e', 'FISIP UB', 'fisip@ub.ac.id', '2017-03-16 22:22:25', '2017-03-16 22:22:49', 'd8067dd0-06ba-11e7-88db-c454448293a1', '0', '1'),
+('64b30852-1105-11e7-ba67-c454448293a1', 'logitechindo', '5f4dcc3b5aa765d61d8327deb882cf99', 'Logitech Indonesia', 'logitech@gmail.com', '2017-03-25 09:47:32', NULL, 'd8067dd0-06ba-11e7-88db-c454448293a1', '0', '0'),
 ('6ac31002-08ba-11e7-be2c-c454448293a1', 'filkomub', '86a65acd94b33daa87c1c6a2d1408593', 'FILKOM UB', 'filkomub@ub.ac.id', '2017-03-14 20:30:40', '2017-03-14 20:32:03', 'd8067dd0-06ba-11e7-88db-c454448293a1', '0', '1'),
 ('850afc76-08ba-11e7-be2c-c454448293a1', 'febub', '5f4dcc3b5aa765d61d8327deb882cf99', 'F. Ekonomi dan Bisnis UB', 'feb@ub.ac.id', '2017-03-14 20:31:24', '2017-03-14 21:12:57', 'd8067dd0-06ba-11e7-88db-c454448293a1', '0', '1'),
 ('ac768b96-08bf-11e7-be2c-c454448293a1', 'mochraflia', 'd41d8cd98f00b204e9800998ecf8427e', 'Mochamad Rafli A', 'mochraflia@gmail.com', '2017-03-14 21:08:18', '2017-03-16 22:20:24', 'd8067dd0-06ba-11e7-88db-c454448293a1', '0', '0'),
 ('b01cf5c7-07f3-11e7-9e9e-c454448293a1', 'rolen', '5f4dcc3b5aa765d61d8327deb882cf99', 'rolennnn', 'rolen@gmail.com', '2017-03-13 20:48:07', NULL, 'd8067dd0-06ba-11e7-88db-c454448293a1', '0', '1'),
 ('b036567b-0863-11e7-ab84-c454448293a1', 'pakar1', '0ed542b815a0d4b0c457ad9def1a21d2', 'Pakar 1', 'pakar1@forecasting-product.com', '2017-03-14 10:09:50', NULL, '4249cbf4-06ba-11e7-88db-c454448293a1', '0', '1'),
-('b0aeea76-0815-11e7-9e9e-c454448293a1', 'laras', '7c6a180b36896a0a8c02787eeafb0e4c', 'laras miranti', 'laras@gmail.com', '2017-03-14 00:51:30', NULL, 'd8067dd0-06ba-11e7-88db-c454448293a1', '1', '1'),
+('b0aeea76-0815-11e7-9e9e-c454448293a1', 'laras', '7c6a180b36896a0a8c02787eeafb0e4c', 'laras miranti', 'laras@gmail.com', '2017-03-14 00:51:30', '2017-03-25 09:52:38', 'd8067dd0-06ba-11e7-88db-c454448293a1', '1', '0'),
 ('b4f28099-07f2-11e7-9e9e-c454448293a1', 'totohugo', '5f4dcc3b5aa765d61d8327deb882cf99', 'TOTO HUGO', 'totohugo@gmail.com', '2017-03-13 20:41:05', NULL, 'd8067dd0-06ba-11e7-88db-c454448293a1', '1', '1'),
 ('b950b3e2-0863-11e7-ab84-c454448293a1', 'pakar2', '0ed542b815a0d4b0c457ad9def1a21d2', 'Pakar 2', 'pakar2@forecasting-product.com', '2017-03-14 10:10:06', NULL, '4249cbf4-06ba-11e7-88db-c454448293a1', '0', '1'),
+('b962cda3-1105-11e7-ba67-c454448293a1', 'candradewi', '7c6a180b36896a0a8c02787eeafb0e4c', 'Candra Dewi', 'candradewi@ub.ac.id', '2017-03-25 09:49:54', NULL, '4249cbf4-06ba-11e7-88db-c454448293a1', '0', '1'),
 ('c2c928fb-0863-11e7-ab84-c454448293a1', 'pakar3', '0ed542b815a0d4b0c457ad9def1a21d2', 'Pakar 3', 'pakar3@forecasting-product.com', '2017-03-14 10:10:22', NULL, '4249cbf4-06ba-11e7-88db-c454448293a1', '0', '1'),
 ('dfabb976-06d9-11e7-88db-c454448293a1', 'nuradli', 'd41d8cd98f00b204e9800998ecf8427e', 'Nur Adli Ari Darmawand', 'nuradliaridarmawand@gmail.com', '2017-03-12 11:10:48', '2017-03-14 11:39:04', 'd8067dd0-06ba-11e7-88db-c454448293a1', '0', '1'),
 ('e4015aab-0864-11e7-ab84-c454448293a1', 'maybank', '5f4dcc3b5aa765d61d8327deb882cf99', 'BII Maybank', 'maybank@maybank.co.id', '2017-03-14 10:18:27', NULL, 'd8067dd0-06ba-11e7-88db-c454448293a1', '0', '0'),
@@ -310,6 +400,30 @@ ALTER TABLE `fp_data_training`
 --
 ALTER TABLE `fp_data_uji`
   ADD PRIMARY KEY (`uuid_fp_data_uji`);
+
+--
+-- Indexes for table `ms_general_settings`
+--
+ALTER TABLE `ms_general_settings`
+  ADD PRIMARY KEY (`uuid_ms_general_settings`);
+
+--
+-- Indexes for table `ms_mail`
+--
+ALTER TABLE `ms_mail`
+  ADD PRIMARY KEY (`uuid_ms_mail`);
+
+--
+-- Indexes for table `ms_mail_receiver`
+--
+ALTER TABLE `ms_mail_receiver`
+  ADD PRIMARY KEY (`uuid_ms_mail`);
+
+--
+-- Indexes for table `ms_mail_sender`
+--
+ALTER TABLE `ms_mail_sender`
+  ADD PRIMARY KEY (`uuid_ms_mail`);
 
 --
 -- Indexes for table `ms_subsystem`
