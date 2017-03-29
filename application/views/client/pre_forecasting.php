@@ -100,7 +100,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
-        <li class="treeview">
+        <li class="active treeview">
           <a href="#">
             <i class="fa fa-fast-forward"></i> <span>Peramalan</span>
           </a>
