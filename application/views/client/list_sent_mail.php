@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>BI Rate Forecasting | Data Training</title>
+  <title>BI Rate Forecasting | Mailbox</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -30,8 +30,6 @@
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="<?php echo base_url('assets/'); ?>plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
-  <link rel="stylesheet" href="<?php echo base_url('assets/'); ?>plugins/datatables/dataTables.bootstrap.css">
-
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -44,7 +42,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="<?php echo base_url('expert/home')?>" class="logo">
+    <a href="<?php echo base_url('client/home')?>" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>BI</b>F</span>
       <!-- logo for regular state and mobile devices -->
@@ -100,47 +98,14 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
-        <li class="treeview active">
-          <a href="#">
-            <i class="fa fa-database"></i> <span>Master Data</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="active treeview-menu">
-            <li>
-              <a href="#"><i class="fa fa-folder-open"></i> Data Latih
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-plus"></i> Tambah Data Latih</a></li>
-                <li><a href="#"><i class="fa fa-list-ul"></i> List Data Latih</a></li>
-              </ul>
-            </li>
-            <li>
-              <a href="#"><i class="fa fa-folder"></i> Data Uji
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-plus"></i> Tambah Data Uji</a></li>
-                <li><a href="<?php echo base_url('expert/list-data-uji'); ?>"><i class="fa fa-list-ul"></i> List Data Uji</a></li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-
         <li class="treeview">
-          <a href="<?php echo base_url('expert/pre-forecasting'); ?>">
+          <a href="<?php echo base_url('client/pre-forecasting'); ?>">
             <i class="fa fa-fast-forward"></i> <span>Peramalan</span>
           </a>
         </li>
 
-        <li class="treeview">
-          <a href="<?php echo base_url('expert/list-inbox'); ?>">
+        <li class="active treeview">
+          <a href="#">
             <i class="fa fa-envelope"></i> <span>Mailbox</span>
           </a>
         </li>
@@ -154,63 +119,96 @@
     <section class="content-header">
       <h1>
         Dashboard
-        <small>List Data Training</small>
+        <small>Mailbox Panel</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="<?php echo base_url('admin/home')?>"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="fa fa-users active"> List Data Latih</li>
+        <li><a href="<?php echo base_url('client/home')?>"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="fa fa-users active"> Mailbox</li>
       </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
-      <div class="box">
-        <div class="box-header">
-          <?php echo $this->session->flashdata('msg'); ?>
-          <h3 class="box-title">List Data Latih</h3>
+      <div class="row">
+        <div class="col-md-3">
+          <a href="<?php echo base_url('client/compose-mail'); ?>" class="btn btn-primary btn-block margin-bottom">Compose</a>
+
+          <div class="box box-solid">
+            <div class="box-header with-border">
+              <h3 class="box-title">Folders</h3>
+
+              <div class="box-tools">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="box-body no-padding">
+              <ul class="nav nav-pills nav-stacked">
+                <li><a href="<?php echo base_url('client/list-inbox'); ?>"><i class="fa fa-inbox"></i> Inbox</a></li>
+                <li class="active"><a href="#"><i class="fa fa-envelope-o"></i> Sent</a></li>
+                <li><a href="#"><i class="fa fa-file-text-o"></i> Drafts</a></li>
+                </li>
+                <li><a href=<?php echo base_url('client/list-trash'); ?>><i class="fa fa-trash-o"></i> Trash</a></li>
+              </ul>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /. box -->
         </div>
-        <!-- /.box-header -->
-        <div class="box-body">
-          <table id="listuser" class="table table-bordered table-striped">
-            <thead>
-            <tr>
-              <th>Bulan</th>
-              <th>Tahun</th>
-              <th>BI rate</th>
-              <th>Action</th>
-            </tr>
-            </thead>
-            <tbody>
-              <?php
-                $a=0;
-                foreach($data_training as $row)
-                {
-                  echo '<tr>';
-                  echo '<td>'.$row->bulan.'</td>';
-                  echo '<td>'.$row->tahun.'</td>';
-                  echo '<td>'.$bi_percentage[$a].' %</td>';
-                  echo '<td> <div class="btn-group">
-                    <a href="edit-data/'.$row->uuid_fp_data_training.'" role="button" class="btn btn-primary btn-flat"><i class="fa fa-edit"></i></a>';
-                  echo '<a href="delete-data/'.$row->uuid_fp_data_training.'" role="button" class="btn btn-danger btn-flat"><i class="fa fa-user-times"></i></a>';
-                  echo '</div> </td>';
-                  echo '</tr>';
-                  $a++;
-                }
-              ?>
-            </tbody>
-            <tfoot>
-              <tr>
-                <th>Bulan</th>
-                <th>Tahun</th>
-                <th>BI rate</th>
-                <th>Action</th>
-              </tr>
-            </tfoot>
-          </table>
+        <!-- /.col -->
+        <div class="col-md-9">
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Sent Mail</h3>
+
+              <!-- <div class="box-tools pull-right">
+                <div class="has-feedback">
+                  <input type="text" class="form-control input-sm" placeholder="Search Mail">
+                  <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                </div>
+              </div> -->
+              <!-- /.box-tools -->
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+              <div class="mailbox-controls">
+                <!-- /.btn-group -->
+                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
+                <!-- /.pull-right -->
+              </div>
+              <div class="table-responsive mailbox-messages">
+                <table class="table table-hover table-striped">
+                  <tbody>
+                    <?php
+                    if($sent_mail) {
+                      foreach ($sent_mail as $row) {
+                        echo '<tr>';
+                        echo  '<td class="mailbox-name"><a href=read-mail/'.$row->uuid_ms_mail.'>'.$row->full_name.'</a></td>';
+                        echo  '<td class="mailbox-subject"><b>'.$row->subject.'</b>'.' - '.substr(strip_tags($row->body), 0, 40).'...';
+                        echo  '</td>';
+                        echo  '<td class="mailbox-date">'.$row->dtm_send.'</td>';
+                        echo '</tr>';
+                      }
+                    } else {
+                      echo '<tr align="center">
+                              <td>Tidak ada pesan terkirim</td>
+                            </tr>';
+                    }
+                    ?>
+
+                  </tbody>
+                </table>
+                <!-- /.table -->
+              </div>
+              <!-- /.mail-box-messages -->
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /. box -->
         </div>
-        <!-- /.box-body -->
+        <!-- /.col -->
       </div>
-      <!-- /.box -->
+      <!-- /.row -->
     </section>
     <!-- /.content -->
   </div>
@@ -275,6 +273,9 @@
 </script>
 <!-- Bootstrap 3.3.6 -->
 <script src="<?php echo base_url('assets/'); ?>bootstrap/js/bootstrap.min.js"></script>
+<!-- Morris.js charts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="<?php echo base_url('assets/'); ?>plugins/morris/morris.min.js"></script>
 <!-- Sparkline -->
 <script src="<?php echo base_url('assets/'); ?>plugins/sparkline/jquery.sparkline.min.js"></script>
 <!-- jvectormap -->
@@ -295,16 +296,9 @@
 <script src="<?php echo base_url('assets/'); ?>plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url('assets/'); ?>dist/js/app.min.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="<?php echo base_url('assets/'); ?>dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url('assets/'); ?>dist/js/demo.js"></script>
-<!-- DataTables -->
-<script src="<?php echo base_url('assets/'); ?>plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="<?php echo base_url('assets/'); ?>plugins/datatables/dataTables.bootstrap.min.js"></script>
-<!-- page script -->
-<script>
-  $(function () {
-    $("#listuser").DataTable();
-  });
-</script>
 </body>
 </html>

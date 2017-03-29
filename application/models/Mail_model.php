@@ -110,6 +110,16 @@ class Mail_model extends CI_Model {
     return $this->db->update('ms_mail_receiver');
   }
 
+  public function get_one_mail($uuid_ms_mail) {
+    $this->db->select('ms_user.full_name, ms_mail.*, ms_mail_sender.*');
+    $this->db->from('ms_mail');
+    $this->db->join('ms_user', 'ms_user.uuid_ms_user = ms_mail.uuid_ms_user_sender');
+    $this->db->join('ms_mail_sender', 'ms_mail.uuid_ms_mail = ms_mail_sender.uuid_ms_mail');
+    $this->db->where('ms_mail.uuid_ms_mail', $uuid_ms_mail);
+    $query = $this->db->get();
+    return $query->row();
+  }
+
   // public function send_to_draft($uuid_ms_mail) {
   //
   // }

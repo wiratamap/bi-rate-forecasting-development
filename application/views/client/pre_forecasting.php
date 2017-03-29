@@ -100,9 +100,14 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
-        <li class="treeview active">
+        <li class="treeview">
           <a href="#">
             <i class="fa fa-fast-forward"></i> <span>Peramalan</span>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="<?php echo base_url('client/list-inbox'); ?>">
+            <i class="fa fa-envelope"></i> <span>Mailbox</span>
           </a>
         </li>
     </section>

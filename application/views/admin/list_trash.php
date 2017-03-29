@@ -139,7 +139,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-user-plus"></i> Tambah User</a></li>
+            <li><a href="<?php echo base_url('admin/add-user'); ?>"><i class="fa fa-user-plus"></i> Tambah User</a></li>
             <li><a href="<?php echo base_url('admin/list-user'); ?>"><i class="fa fa-user"></i> List User</a></li>
           </ul>
         </li>

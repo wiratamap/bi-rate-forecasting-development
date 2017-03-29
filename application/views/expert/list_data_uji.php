@@ -107,7 +107,7 @@
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
-          <ul class="treeview-menu">
+          <ul class="active treeview-menu">
             <li>
               <a href="#"><i class="fa fa-folder-open"></i> Data Latih
                 <span class="pull-right-container">
@@ -136,6 +136,12 @@
         <li class="treeview">
           <a href="<?php echo base_url('expert/pre-forecasting'); ?>">
             <i class="fa fa-fast-forward"></i> <span>Peramalan</span>
+          </a>
+        </li>
+
+        <li class="treeview">
+          <a href="<?php echo base_url('expert/list-inbox'); ?>">
+            <i class="fa fa-envelope"></i> <span>Mailbox</span>
           </a>
         </li>
     </section>

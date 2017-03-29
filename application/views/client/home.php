@@ -103,6 +103,11 @@
             <i class="fa fa-fast-forward"></i> <span>Peramalan</span>
           </a>
         </li>
+        <li class="treeview">
+          <a href="<?php echo base_url('client/list-inbox'); ?>">
+            <i class="fa fa-envelope"></i> <span>Mailbox</span>
+          </a>
+        </li>
     </section>
     <!-- /.sidebar -->
   </aside>

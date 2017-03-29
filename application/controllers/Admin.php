@@ -135,11 +135,6 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/list_inbox', array('inbox' => $data['inbox']));
 	}
 
-	//buggy feature. still on development
-	// public function list_draft() {
-	//
-	// }
-
 	public function list_trash() {
 		$data['list_trash'] = $this->mail_model->get_all_trash($this->session->userdata('uuid_ms_user'));
 
@@ -182,14 +177,25 @@ class Admin extends CI_Controller {
 		redirect('admin/list-inbox');
 	}
 
-	// public function send_to_draft() {
-	//
-	// }
-
 	public function remove_mail($uuid_ms_mail) {
 		$this->mail_model->remove_mail($uuid_ms_mail);
 		$this->session->set_flashdata('msg','<div class="alert alert-success text-center">Mail has been permanently deleted!</div>');
 		redirect('admin/list-trash');
 	}
+
+	public function read_mail($uuid_ms_mail) {
+		$data = $this->mail_model->get_one_mail($uuid_ms_mail);
+		$this->load->view('admin/read_mail', $data);
+	}
+
+	// public function send_to_draft() {
+	//
+	// }
+
+	//buggy feature. still on development
+	// public function list_draft() {
+	//
+	// }
+
 
 }
