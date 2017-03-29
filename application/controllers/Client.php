@@ -49,6 +49,21 @@ class Client extends CI_Controller {
 																											'bi_percentage_uji' => $bi_percentage_uji));
 	}
 
+	public function forecasting_form() {
+		$this->form_validation->set_rules('datefrom', 'Dari', 'required');
+		$this->form_validation->set_rules('dateto', 'Sampai', 'required');
+		$this->form_validation->set_rules('rank', 'Rank', 'required|is_natural_no_zero|less_than[6]|greater_than[0]');
+		$this->form_validation->set_rules('frequency_partitioning', 'Frequency Partitioning', 'required|is_natural_no_zero|less_than[11]|greater_than[2]');
+
+		if ($this->form_validation->run() == FALSE) {
+			$this->load->view('client/forecasting_form');
+		} else {
+			var_dump($this->input->post('datefrom'));
+		}
+
+
+	}
+
 	public function list_inbox() {
 		$data['inbox'] = $this->mail_model->get_all_inbox($this->session->userdata('uuid_ms_user'));
 

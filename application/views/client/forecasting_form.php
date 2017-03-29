@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>BI Rate Forecasting | Data Training</title>
+  <title>BI Rate Forecasting | Tambah User</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -29,8 +29,6 @@
   <link rel="stylesheet" href="<?php echo base_url('assets/'); ?>plugins/daterangepicker/daterangepicker.css">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="<?php echo base_url('assets/'); ?>plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-
-  <link rel="stylesheet" href="<?php echo base_url('assets/'); ?>plugins/datatables/dataTables.bootstrap.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -105,6 +103,7 @@
             <i class="fa fa-fast-forward"></i> <span>Peramalan</span>
           </a>
         </li>
+
         <li class="treeview">
           <a href="<?php echo base_url('client/list-inbox'); ?>">
             <i class="fa fa-envelope"></i> <span>Mailbox</span>
@@ -120,100 +119,62 @@
     <section class="content-header">
       <h1>
         Dashboard
-        <small>Pra Peramalan</small>
+        <small>Forecasting Panel</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="<?php echo base_url('client/home')?>"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="fa fa-users active"> Pra Peramalan</li>
+        <li><a href="<?php echo base_url('client/pre-forecasting')?>"></i> Pra Peramalan</a></li>
+        <li class="active"> Form Peramalan</li>
       </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
-      <div class="box">
-        <div class="box-header">
-          <?php echo $this->session->flashdata('msg'); ?>
-          <h3 class="box-title">List Data Latih</h3>
-        </div>
-        <!-- /.box-header -->
-        <div class="box-body">
-          <table id="listdatatraining" class="table table-bordered table-striped">
-            <thead>
-            <tr>
-              <th>Bulan</th>
-              <th>Tahun</th>
-              <th>BI rate</th>
-            </tr>
-            </thead>
-            <tbody>
-              <?php
-                $a=0;
-                foreach($data_training as $row)
-                {
-                  echo '<tr>';
-                  echo '<td>'.$row->bulan.'</td>';
-                  echo '<td>'.$row->tahun.'</td>';
-                  echo '<td>'.$bi_percentage_training[$a].' %</td>';
-                  echo '</tr>';
-                  $a++;
-                }
-              ?>
-            </tbody>
-            <tfoot>
-              <tr>
-                <th>Bulan</th>
-                <th>Tahun</th>
-                <th>BI rate</th>
-              </tr>
-            </tfoot>
-          </table>
-        </div>
-        <!-- /.box-body -->
-      </div>
-      <!-- /.box -->
+      <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="box box-primary">
+          <div class="box-header with-border">
+            <h3 class="box-title">Form Peramalan</h3>
+          </div>
+          <!-- /.box-header -->
+          <!-- form start -->
+          <?php echo form_open('client/forecasting-form'); ?>
+            <div class="box-body">
+              <label>Range data:</label>
+              <div class="input-group date">
+                <div class="input-group-addon">
+                  <i class="fa fa-calendar"></i>
+                </div>
+                <input type="text" value="<?php echo set_value('datefrom'); ?>" class="form-control pull-right" name="datefrom" id="datepicker">
+              </div>
+              <div class="input-group date">
+                <div class="input-group-addon">
+                  <i class="fa fa-calendar"></i>
+                </div>
+                <input type="text" class="form-control pull-right" name="dateto" id="datepicker1">
+              </div>
+                <span class="text-danger"><?php echo form_error('rank'); ?></span><br>
+              <div class="form-group has-feedback">
+                <label>K Frekuensi terpadat:</label>
+                <input type="number" value="<?php echo set_value('rank'); ?>" min="1" max="5" class="form-control" value="<?php echo set_value('rank')?>" placeholder="ex: 3, 4, 5" name="rank" required>
+              </div>
+                <span class="text-danger"><?php echo form_error('frequency_partitioning'); ?></span>
+              <div class="form-group has-feedback">
+                <label>Subsequence partition dari K tertinggi:</label>
+                <input type="number" min="3" max="10" class="form-control" value="<?php echo set_value('frequency_partitioning')?>" placeholder="ex: 3, 4, 5" name="frequency_partitioning" required>
+              </div>
+            </div>
+            <!-- /.box-body -->
 
-      <div class="box">
-        <div class="box-header">
+            <div class="box-footer">
+              <button type="reset" class="btn btn-primary">Reset</button>
+              <button type="submit" class="btn btn-primary pull-right">Submit</button>
+            </div>
+          <?php echo form_close(); ?>
           <?php echo $this->session->flashdata('msg'); ?>
-          <h3 class="box-title">List Data Uji</h3>
         </div>
-        <!-- /.box-header -->
-        <div class="box-body">
-          <table id="listdatauji" class="table table-bordered table-striped">
-            <thead>
-            <tr>
-              <th>Bulan</th>
-              <th>Tahun</th>
-              <th>BI rate</th>
-            </tr>
-            </thead>
-            <tbody>
-              <?php
-                $b=0;
-                foreach($data_uji as $row)
-                {
-                  echo '<tr>';
-                  echo '<td>'.$row->bulan.'</td>';
-                  echo '<td>'.$row->tahun.'</td>';
-                  echo '<td>'.$bi_percentage_uji[$b].' %</td>';
-                  echo '</tr>';
-                  $b++;
-                }
-              ?>
-            </tbody>
-            <tfoot>
-              <tr>
-                <th>Bulan</th>
-                <th>Tahun</th>
-                <th>BI rate</th>
-              </tr>
-            </tfoot>
-          </table>
-        </div>
-        <!-- /.box-body -->
+        <!-- /.box -->
       </div>
-      <!-- /.box -->
-      <a href="<?php echo base_url('client/forecasting-form'); ?>" class="btn btn-primary btn-block margin-bottom">Peramalan dan Pengujian</a>
     </section>
     <!-- /.content -->
   </div>
@@ -278,6 +239,9 @@
 </script>
 <!-- Bootstrap 3.3.6 -->
 <script src="<?php echo base_url('assets/'); ?>bootstrap/js/bootstrap.min.js"></script>
+<!-- Morris.js charts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="<?php echo base_url('assets/'); ?>plugins/morris/morris.min.js"></script>
 <!-- Sparkline -->
 <script src="<?php echo base_url('assets/'); ?>plugins/sparkline/jquery.sparkline.min.js"></script>
 <!-- jvectormap -->
@@ -298,16 +262,24 @@
 <script src="<?php echo base_url('assets/'); ?>plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url('assets/'); ?>dist/js/app.min.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="<?php echo base_url('assets/'); ?>dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url('assets/'); ?>dist/js/demo.js"></script>
-<!-- DataTables -->
-<script src="<?php echo base_url('assets/'); ?>plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="<?php echo base_url('assets/'); ?>plugins/datatables/dataTables.bootstrap.min.js"></script>
-<!-- page script -->
 <script>
-  $(function () {
-    $("#listdatatraining").DataTable();
-    $("#listdatauji").DataTable();
+  //Date picker
+  $('#datepicker').datepicker({
+    format: "mm-yyyy",
+    startView: "months",
+    minViewMode: "months",
+    autoclose: true
+  });
+
+  $('#datepicker1').datepicker({
+    format: "mm-yyyy",
+    startView: "months",
+    minViewMode: "months",
+    autoclose: true
   });
 </script>
 </body>
