@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>BI Rate Forecasting | Tambah User</title>
+  <title>BI Rate Forecasting | Forecasting Form</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -138,7 +138,7 @@
           </div>
           <!-- /.box-header -->
           <!-- form start -->
-          <?php echo form_open('client/forecasting-form'); ?>
+          <?php echo form_open('client/forecasting-result'); ?>
             <div class="box-body">
               <label>Range data:</label>
               <div class="input-group date">
@@ -152,16 +152,21 @@
                   <i class="fa fa-calendar"></i>
                 </div>
                 <input type="text" class="form-control pull-right" name="dateto" id="datepicker1">
-              </div>
-                <span class="text-danger"><?php echo form_error('rank'); ?></span><br>
+              </div><br>
+                <span class="text-danger"><?php echo form_error('interval_length'); ?></span>
               <div class="form-group has-feedback">
-                <label>K Frekuensi terpadat:</label>
-                <input type="number" value="<?php echo set_value('rank'); ?>" min="1" max="5" class="form-control" value="<?php echo set_value('rank')?>" placeholder="ex: 3, 4, 5" name="rank" required>
+                <label>Interval awal:</label>
+                <input type="number" value="<?php echo set_value('interval_length'); ?>" min ="1" class="form-control" placeholder="ex: 3, 4, 5" name="interval_length" required>
               </div>
-                <span class="text-danger"><?php echo form_error('frequency_partitioning'); ?></span>
+                <span class="text-danger"><?php echo form_error('n_top_frequency'); ?></span>
               <div class="form-group has-feedback">
-                <label>Subsequence partition dari K tertinggi:</label>
-                <input type="number" min="3" max="10" class="form-control" value="<?php echo set_value('frequency_partitioning')?>" placeholder="ex: 3, 4, 5" name="frequency_partitioning" required>
+                <label>N frekuensi tertinggi:</label>
+                <input type="number" value="<?php echo set_value('n_top_frequency'); ?>" min ="1" max="10" class="form-control" placeholder="ex: 3, 4, 5" name="n_top_frequency" required>
+              </div>
+                <span class="text-danger"><?php echo form_error('sub_interval_length'); ?></span>
+              <div class="form-group has-feedback">
+                <label>Panjang sub interval:</label>
+                <input type="number" min="1" max="25" class="form-control" value="<?php echo set_value('sub_interval_length')?>" placeholder="ex: 3, 4, 5" name="sub_interval_length" required>
               </div>
             </div>
             <!-- /.box-body -->

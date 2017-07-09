@@ -171,48 +171,7 @@
         <!-- /.box-body -->
       </div>
       <!-- /.box -->
-
-      <div class="box">
-        <div class="box-header">
-          <?php echo $this->session->flashdata('msg'); ?>
-          <h3 class="box-title">List Data Uji</h3>
-        </div>
-        <!-- /.box-header -->
-        <div class="box-body">
-          <table id="listdatauji" class="table table-bordered table-striped">
-            <thead>
-            <tr>
-              <th>Bulan</th>
-              <th>Tahun</th>
-              <th>BI rate</th>
-            </tr>
-            </thead>
-            <tbody>
-              <?php
-                $b=0;
-                foreach($data_uji as $row)
-                {
-                  echo '<tr>';
-                  echo '<td>'.$row->bulan.'</td>';
-                  echo '<td>'.$row->tahun.'</td>';
-                  echo '<td>'.$bi_percentage_uji[$b].' %</td>';
-                  echo '</tr>';
-                  $b++;
-                }
-              ?>
-            </tbody>
-            <tfoot>
-              <tr>
-                <th>Bulan</th>
-                <th>Tahun</th>
-                <th>BI rate</th>
-              </tr>
-            </tfoot>
-          </table>
-        </div>
-        <!-- /.box-body -->
-      </div>
-      <!-- /.box -->
+      
       <a href="<?php echo base_url('client/forecasting-form'); ?>" class="btn btn-primary btn-block margin-bottom">Peramalan dan Pengujian</a>
     </section>
     <!-- /.content -->
